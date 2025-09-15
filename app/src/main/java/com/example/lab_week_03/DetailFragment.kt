@@ -9,40 +9,33 @@ import androidx.fragment.app.Fragment
 
 class DetailFragment : Fragment() {
 
-    // ambil TextView dari layout
     private val coffeeTitle: TextView? get() = view?.findViewById(R.id.coffee_title)
     private val coffeeDesc: TextView? get() = view?.findViewById(R.id.coffee_desc)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // inflate layout fragment_detail.xml
-        return inflater.inflate(R.layout.fragment_detail, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_detail, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // ambil argumen pakai Safe Args
         val args = DetailFragmentArgs.fromBundle(requireArguments())
         setCoffeeData(args.coffeeId)
     }
 
-    // tampilkan data berdasarkan id yang dikirim dari ListFragment
     private fun setCoffeeData(id: Int) {
         when (id) {
-            R.id.affogato -> {
+            ListFragment.ID_AFFOGATO -> {
                 coffeeTitle?.text = getString(R.string.affogato_title)
-                coffeeDesc?.text = getString(R.string.affogato_desc)
+                coffeeDesc?.text  = getString(R.string.affogato_desc)
             }
-            R.id.americano -> {
+            ListFragment.ID_AMERICANO -> {
                 coffeeTitle?.text = getString(R.string.americano_title)
-                coffeeDesc?.text = getString(R.string.americano_desc)
+                coffeeDesc?.text  = getString(R.string.americano_desc)
             }
-            R.id.latte -> {
+            ListFragment.ID_LATTE -> {
                 coffeeTitle?.text = getString(R.string.latte_title)
-                coffeeDesc?.text = getString(R.string.latte_desc)
+                coffeeDesc?.text  = getString(R.string.latte_desc)
             }
         }
     }
